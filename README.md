@@ -1,71 +1,43 @@
 # toki suno
 
-**toki suno** is a light-based realisation of **toki pona**, designed for intelligences that do not use speech or humanoid gestures, but can control coloured light.
+toki suno is a light-based realisation of toki pona: a way to communicate toki pona concepts through colour and visual change rather than speech or humanoid gesture.
 
-It was created as part of a science-fiction project, but is documented here as a standalone language design experiment.
-
----
-
-## What it is
-
-toki suno expresses toki pona concepts using:
-- colour
-- spatial arrangement
-- framing
-
-A full utterance can be shown **simultaneously**, rather than word by word.  
-Grammatical roles are indicated visually (for example, by borders), rather than by particles or word order.
-
-The result is a system that is:
-- more limited in vocabulary than toki pona
-- but capable of faster, denser expression if the medium allows it
+It was created for a science-fiction setting, but is documented here as a standalone language design experiment.
 
 ---
 
-## Why light
-        
-The language is intended for communication with non-humanoid intelligences whose physical form or sensory systems differ from humans, where:
-- speech is not available
-- limbs or signing are not possible
-- light is a shared, controllable medium
+## what it is (in one paragraph)
 
-Design choices prioritise:
-- simplicity
-- immediacy
-- minimal social assumptions
-
-Concepts that depend on human social structures (such as money or gender) are intentionally excluded.
+toki suno keeps toki pona’s minimal vocabulary and context-driven meaning, and explores what happens when expression is constrained to light: colour carries lexical meaning, and structure is conveyed visually and temporally rather than through spoken particles or word order.
 
 ---
 
-## Relation to toki pona
+## design goals and constraints
 
-Toki Suno is **inspired by toki pona** and follows its philosophy of minimalism and context-driven meaning, where differing perspectives can lead to multiple valid interpretations.
-
-It does not add grammatical categories to toki pona.  
-Instead, it removes or compresses them by using a visual modality.
-
-The aim is not to replace toki pona, but to explore how its ideas behave when:
-- linear order is removed
-- grammar becomes spatial
-- meaning is perceived all at once
+- extremely small vocabulary (this implementation is smaller than toki pona)
+- minimal social assumptions (e.g. no money terms; no grammatical gender)
+- meaning remains context-driven; differing perspectives can lead to multiple valid interpretations
+- designed for non-humanoid intelligences that can manipulate colour and visual contrast
 
 ---
 
-## Design constraints
+## repository contents
 
-- Extremely small vocabulary
-- No reliance on word order
-- No grammatical gender
-- No required connectors or particles
-- Meaning derived from colour, position, and framing
-- Ambiguity is accepted as a feature, not a flaw
+- `grammar.md` — how utterances are structured (rendering, boundaries, attachment, visual roles)
+- lexicon — colour mappings for words (currently being migrated into a plain `lexicon.md`)
+- examples — short samples
 
 ---
 
-## Status
+## credit
 
-This is an **experimental design**.
+inspired by toki pona (Sonja Lang). the structure was also informed by signed interpretations of toki pona.
 
-The rules, terminology, and examples may change.  
-Feedback on structure and clarity is welcome.
+---
+
+## feedback
+
+If you spot inconsistencies or edge cases, open an issue with:
+- the intended toki pona gloss
+- what you expected the structure to be
+- why the current rules don’t cover it
