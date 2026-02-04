@@ -1,15 +1,15 @@
-# toki suno grammar
+# Toki Suno Grammar
 
-toki suno is a light-based realisation inspired by toki pona.  
+Toki Suno is a light-based realisation inspired by Toki Pona.  
 Grammar is expressed through **rendering order, pauses, framing, and colour**, rather than through particles or spatial word order.
 
-This document describes how utterances are structured and interpreted in toki suno.
+This document describes how utterances are structured and interpreted in Toki Suno.
 
 ---
 
-## 1. Core principle
+## 1. Core Principle
 
-An utterance in toki suno is revealed over time, but interpreted as a whole.
+An utterance in Toki Suno is revealed over time, but interpreted as a whole.
 
 - Colour carries lexical meaning.
 - White framing carries grammatical function.
@@ -20,7 +20,7 @@ There are no explicit grammatical particles.
 
 ---
 
-## 2. Rendering order and pauses
+## 2. Rendering Order and Pauses
 
 Rendering order is essential to interpretation.
 
@@ -33,7 +33,7 @@ Pauses fulfil the structural role of particles such as *li* and *e*.
 
 ---
 
-## 3. Heads and modifiers
+## 3. Heads and Modifiers
 
 Each group has a **head**, followed by **modifiers**.
 
@@ -46,7 +46,7 @@ Modifier grouping is handled visually; no grouping word (such as *pi*) is used.
 
 ---
 
-## 4. Subject group
+## 4. Subject Group
 
 - The subject head is shown in solid colour(s), framed by a **solid white frame**.
 - Subject modifiers are revealed in solid colour(s) without a frame.
@@ -55,7 +55,7 @@ Modifier grouping is handled visually; no grouping word (such as *pi*) is used.
 
 ---
 
-## 5. Verb group
+## 5. Verb Group
 
 - The verb head is shown in solid colour(s), framed by a **flowing white frame**.
 - Verb modifiers are revealed in solid colour(s) without a frame.
@@ -63,7 +63,7 @@ Modifier grouping is handled visually; no grouping word (such as *pi*) is used.
 
 ---
 
-## 6. Object group
+## 6. Object Group
 
 - The object head is shown in solid colour(s), framed by a **pulsating white frame**.
 - Object modifiers are revealed in solid colour(s) without a frame.
@@ -74,16 +74,16 @@ For multiple objects, the same procedure is repeated.
 
 ---
 
-## 7. Preposition and connective words
+## 7. Preposition and Connective Words
 
-Words such as **la**, **en**, **anu**, and **o** are treated as lexical items.
+Words such as **la**, **anu**, and **o** are treated as lexical items.
 
 - Their function is determined by placement and rendering order.
 - Attachment follows temporal proximity: a connective applies to what immediately follows, unless a pause intervenes.
 
 ---
 
-## 8. Attachment rules
+## 8. Attachment Rules
 
 Attachment is determined by rendering order.
 
@@ -95,11 +95,11 @@ This replaces syntactic markers used in spoken languages.
 
 ---
 
-## 9. Negation and questions
+## 9. Negation and Questions
 
-toki suno does not introduce special grammatical mechanisms for negation or questions.
+Toki Suno does not introduce special grammatical mechanisms for negation or questions.
 
-- Negation is expressed lexically using **ala**, following toki pona usage.
+- Negation is expressed lexically using **ala**, following Toki Pona usage.
 - Questions are expressed lexically using **seme**.
 
 Their visual rendering is defined in the lexicon.
@@ -108,7 +108,7 @@ Their visual rendering is defined in the lexicon.
 
 ## 10. Flexibility
 
-The grammar of toki suno is not prescriptive.
+The grammar of Toki Suno is not prescriptive.
 
 The system is designed to:
 - adapt to different visual implementations
