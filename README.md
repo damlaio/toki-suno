@@ -8,13 +8,13 @@ Toki Suno explores what happens when language is constrained to a medium shared 
 
 ---
 
-## What It Is
+## What it is
 
 Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and explores what happens when expression is constrained to light: colour carries lexical meaning, and structure is conveyed visually and temporally rather than through spoken particles or word order.
 
 ---
 
-## Design Goals and Constraints
+## Design goals and constraints
 
 - Extremely small vocabulary (this implementation is smaller than Toki Pona)
 - Minimal social assumptions (e.g. no money terms; no grammatical gender)
@@ -24,7 +24,7 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 
 ---
 
-## Repository Contents
+## Repository contents
 
 - `grammar.md` — how utterances are structured (rendering, boundaries, attachment, visual roles)
 - `lexicon.md` — colour mappings for words
