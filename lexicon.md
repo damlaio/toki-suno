@@ -56,7 +56,8 @@ Words expressing colours are not used on their own.
 
 ### kule
 **meaning:** colour, paint; colourful, painted  
-**rendering:** Purple + Dark Blue + Yellow  
+**rendering:** Brown + Light Blue + Dark Blue
+  
 
 ---
 
