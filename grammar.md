@@ -114,3 +114,4 @@ The system is designed to:
 - adapt to different visual implementations
 - tolerate variation
 - evolve as new constraints are explored
+```
