@@ -1,9 +1,9 @@
 # Toki Suno Lexicon
 
-This document lists the lexical items used in toki suno and their visual rendering.
+This document lists the lexical items used in Toki Suno and their visual rendering.
 
-Meanings and usage follow toki pona unless otherwise noted.  
-Only the words listed here are part of the current toki suno lexicon.
+Meanings and usage follow Toki Pona unless otherwise noted.  
+Only the words listed here are part of the current Toki Suno lexicon.
 
 Grammatical role is not encoded lexically. It is determined by rendering, framing, pauses, and context (see `grammar.md`).
 
@@ -31,7 +31,7 @@ Words expressing colours are not used on their own.
 
 ### loje
 **meaning:** red  
-**rendering:** red  
+**rendering:** Red  
 **note:** always used with `kule`
 
 ### walo
@@ -41,22 +41,22 @@ Words expressing colours are not used on their own.
 
 ### pimeja
 **meaning:** black, dark  
-**rendering:** black (white-framed)  
+**rendering:** Black (white-framed)  
 **note:** always used with `kule`
 
 ### jelo
 **meaning:** yellow, light green  
-**rendering:** yellow or green
+**rendering:** Yellow or Green  
 **note:** always used with `kule`
 
 ### laso
 **meaning:** blue, green  
-**rendering:** light or dark blue or green
+**rendering:** Light or Dark Blue or Green  
 **note:** always used with `kule`
 
 ### kule
 **meaning:** colour, paint; colourful, painted  
-**rendering:** purple + dark blue + yellow  
+**rendering:** Purple + Dark Blue + Yellow  
 
 ---
 
