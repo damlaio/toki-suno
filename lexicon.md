@@ -5,7 +5,8 @@ This document lists the lexical items used in Toki Suno and their visual renderi
 Meanings and usage follow Toki Pona unless otherwise noted.  
 Only the words listed here are part of the current Toki Suno lexicon.
 
-Grammatical role is not encoded lexically. It is determined by rendering, framing, pauses, and context (see `grammar.md`).
+Grammatical role is not encoded lexically. It is determined by rendering, framing, pauses, and context (see `grammar.md`).  
+**Note:** Special lexical frames (e.g. ala, seme, pimeja) are part of a word’s rendering and are distinct from grammatical role frames.
 
 ---
 
@@ -20,7 +21,7 @@ Purple
 Red  
 Yellow  
 
-White and black are only used for certain special lexical items and for actual colours.
+White and Black are reserved for special lexical items and for literal colour meaning.
 
 ---
 
@@ -94,7 +95,7 @@ Words expressing colours are not used on their own.
 
 | word | meaning | rendering |
 |---|---|---|
-| ala | no, not, none; nothing; negation; zero | white frame |
+| ala | no, not, none; nothing; negation; zero | empty white frame |
 | seme | what, which | flashing white frame |
 
 ---
