@@ -44,3 +44,4 @@ If you spot inconsistencies or edge cases, open an issue with:
 - the intended Toki Pona gloss
 - what you expected the structure to be
 - why the current rules don’t cover it
+```
