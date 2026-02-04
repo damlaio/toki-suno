@@ -16,7 +16,8 @@ An utterance in Toki Suno is revealed over time, but interpreted as a whole.
 - Pauses (darkness) mark boundaries.
 - Rendering order determines structure and attachment.
 
-There are no explicit grammatical particles.
+There are no explicit grammatical particles.  
+Special lexical frames (used by some words) are separate from role frames and do not mark subject/verb/object.
 
 ---
 
