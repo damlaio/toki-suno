@@ -45,19 +45,19 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 
 **toki pona:** `soweli kon kule loje`  
 **gloss:** red bird  
-**colour rendering:** `(Light Blue + Brown + Red) (Dark Blue) (Brown + Light Blue + Dark Blue) (Red)`  
+**colour rendering:** `(Green + Light Blue + Pink) (Dark Blue) (Brown + Light Blue + Dark Blue) (Red)`  
 **display:**
-(<span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)
+(<span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)
 
 ### Hard
 
 **toki pona:** `tenpo lape la jan li moku ala`  
 **gloss:** when sleeping, the person does not eat  
-**colour rendering:** `(Purple + Yellow + Dark Blue) (Light Blue + Dark Blue) (Purple + Dark Blue + Brown) | {S Red + Light Blue + Yellow} | {V Dark Blue + Red} (empty white frame)`  
+**colour rendering:** `(Purple + Yellow + Dark Blue) (Light Blue + Dark Blue) (Purple + Dark Blue + Brown) | {S Red + Light Blue + Yellow} | {V Dark Blue + Red} (dotted white frame)`  
 **display:**
 (<span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span>)<br>
 (S: <span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span>)<br>
-(V: <span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#FFFFFF;border:1px solid #888;"></span>)
+(V: <span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:transparent;border:2px dotted #FFFFFF;outline:1px solid #888;"></span>)
 
 ---
 

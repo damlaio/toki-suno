@@ -40,10 +40,10 @@
 `(soweli) (kon)`  
 
 **colour rendering:**  
-`(Light Blue + Brown + Red) (Dark Blue)`
+`(Green + Light Blue + Pink) (Dark Blue)`
 
 **display:**  
-(<span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)
+(<span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)
 
 ---
 
@@ -58,10 +58,10 @@
 `(soweli) (kon) (kule loje)`  
 
 **colour rendering:**  
-`(Light Blue + Brown + Red) (Dark Blue) (Brown + Light Blue + Dark Blue) (Red)`
+`(Green + Light Blue + Pink) (Dark Blue) (Brown + Light Blue + Dark Blue) (Red)`
 
 **display:**  
-(<span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)
+(<span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)
 
 ---
 
@@ -78,12 +78,12 @@
 `{V moku}`
 
 **colour rendering:**  
-`{S Light Blue + Brown + Red}`<br>
+`{S Green + Light Blue + Pink}`<br>
 `|`<br>
 `{V Dark Blue + Red}`
 
 **display:**  
-(S: <span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)<br>
+(S: <span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>)<br>
 (V: <span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)
 
 ---
@@ -228,11 +228,11 @@
 **colour rendering:**  
 `{S Red + Light Blue + Yellow}`<br>
 `|`<br>
-`{V Dark Blue + Red} (empty white frame)`
+`{V Dark Blue + Red} (dotted white frame)`
 
 **display:**  
 (S: <span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span>)<br>
-(V: <span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#FFFFFF;border:1px solid #888;"></span>)
+(V: <span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:transparent;border:2px dotted #FFFFFF;outline:1px solid #888;"></span>)
 
 ---
 
@@ -249,12 +249,12 @@
 `{V moku}`
 
 **colour rendering:**  
-`{S Red + Light Blue + Yellow} (flashing white frame)`<br>
+`{S Red + Light Blue + Yellow} (dot-fill / static sparkle)`<br>
 `|`<br>
 `{V Dark Blue + Red}`
 
 **display:**  
-(S: <span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#FFFFFF;border:1px dashed #888;"></span>)<br>
+(S: <span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:14px;height:14px;background:radial-gradient(circle at 14% 16%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 34% 22%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 56% 18%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 78% 24%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 24% 46%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 48% 52%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 70% 46%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 30% 74%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 54% 80%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 78% 72%, #FFFFFF 0 0.55px, transparent 0.75px),transparent;"></span>)<br>
 (V: <span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span>)
 ```
 
