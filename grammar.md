@@ -17,7 +17,7 @@ An utterance in Toki Suno is revealed over time, but interpreted as a whole.
 - Rendering order determines structure and attachment.
 
 There are no explicit grammatical particles.  
-Special lexical frames (used by some words) are separate from role frames and do not mark subject/verb/object.
+Special lexical renderings (used by some words) are separate from role frames and do not mark subject/verb/object.
 
 ---
 
@@ -115,4 +115,3 @@ The system is designed to:
 - adapt to different visual implementations
 - tolerate variation
 - evolve as new constraints are explored
-```
