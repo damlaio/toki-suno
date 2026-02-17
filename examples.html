@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toki Suno Animated Frame Preview</title>
+  <style>
+    :root {
+      --bg: #121316;
+      --panel: #1c1e24;
+      --text: #e8e8ea;
+      --muted: #b9bcc6;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 20% -10%, #232633, transparent 40%), var(--bg);
+      color: var(--text);
+      font: 16px/1.45 "Segoe UI", Tahoma, sans-serif;
+    }
+
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+    }
+
+    h1, h2 {
+      margin: 0 0 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    a { color: #9ec5ff; }
+
+    .card {
+      background: linear-gradient(180deg, #252833 0%, var(--panel) 100%);
+      border: 1px solid #353947;
+      border-radius: 10px;
+      padding: 14px;
+      margin: 14px 0;
+    }
+
+    .label {
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .row {
+      margin: 4px 0;
+    }
+
+    .frame {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding: 2px;
+      border-radius: 6px;
+      box-sizing: border-box;
+      vertical-align: middle;
+    }
+
+    .frame-s {
+      border: 2px solid #fff;
+    }
+
+    .frame-v {
+      border: 2px solid #fff;
+      background-image: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 48%, transparent 74%);
+      background-size: 260% 100%;
+      animation: frame-flow 1.35s linear infinite;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.35), 0 0 8px rgba(255,255,255,0.28);
+    }
+
+    .frame-o {
+      border: 2px solid #fff;
+      animation: frame-pulse 1s ease-in-out infinite;
+    }
+
+    .token {
+      display: inline-block;
+      height: 12px;
+      border: 1px solid #888;
+    }
+
+    @keyframes frame-flow {
+      0% {
+        background-position: 180% 0;
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.3), 0 0 6px rgba(255,255,255,0.24);
+      }
+      50% {
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.5), 0 0 12px rgba(255,255,255,0.4);
+      }
+      100% {
+        background-position: -80% 0;
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.3), 0 0 6px rgba(255,255,255,0.24);
+      }
+    }
+
+    @keyframes frame-pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255,255,255,0.12), 0 0 4px rgba(255,255,255,0.2);
+      }
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 0 3px rgba(255,255,255,0.58), 0 0 13px rgba(255,255,255,0.48);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .frame-v, .frame-o {
+        animation: none;
+        background-image: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Toki Suno Animated Frame Preview</h1>
+    <p>This page is the guaranteed animated preview surface for role frames. Markdown fallback remains in <a href="./examples.md">examples.md</a>.</p>
+
+    <section class="card">
+      <h2>Intransitive Predicate</h2>
+      <div class="label">soweli li moku</div>
+      <div class="row">
+        <span class="frame frame-s"><span class="token" style="width:12px;background:#2E8B57;"></span><span class="token" style="width:12px;background:#66CCFF;"></span><span class="token" style="width:12px;background:#FF6FAE;"></span></span>
+      </div>
+      <div class="row">
+        <span class="frame frame-v"><span class="token" style="width:18px;background:#1E3A8A;"></span><span class="token" style="width:18px;background:#E53935;"></span></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Transitive Predicate</h2>
+      <div class="label">jan li moku e kili</div>
+      <div class="row">
+        <span class="frame frame-s"><span class="token" style="width:12px;background:#E53935;"></span><span class="token" style="width:12px;background:#66CCFF;"></span><span class="token" style="width:12px;background:#F4D03F;"></span></span>
+      </div>
+      <div class="row">
+        <span class="frame frame-v"><span class="token" style="width:18px;background:#1E3A8A;"></span><span class="token" style="width:18px;background:#E53935;"></span></span>
+      </div>
+      <div class="row">
+        <span class="frame frame-o"><span class="token" style="width:12px;background:#FF6FAE;"></span><span class="token" style="width:12px;background:#2E8B57;"></span><span class="token" style="width:12px;background:#8B5A2B;"></span></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Negation</h2>
+      <div class="label">jan li moku ala</div>
+      <div class="row">
+        <span class="frame frame-s"><span class="token" style="width:12px;background:#E53935;"></span><span class="token" style="width:12px;background:#66CCFF;"></span><span class="token" style="width:12px;background:#F4D03F;"></span></span>
+      </div>
+      <div class="row">
+        <span class="frame frame-v"><span class="token" style="width:18px;background:#1E3A8A;"></span><span class="token" style="width:18px;background:#E53935;"></span></span>
+        <span class="token" style="width:36px;background:transparent;border:2px dotted #fff;box-sizing:border-box;margin-left:6px;"></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Question</h2>
+      <div class="label">jan seme li moku</div>
+      <div class="row">
+        <span class="frame frame-s"><span class="token" style="width:12px;background:#E53935;"></span><span class="token" style="width:12px;background:#66CCFF;"></span><span class="token" style="width:12px;background:#F4D03F;"></span></span>
+        <span class="token" style="width:36px;background:radial-gradient(circle at 8% 10%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 26% 6%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 51% 9%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 74% 7%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 92% 14%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 94% 34%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 92% 56%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 95% 78%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 86% 94%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 62% 94%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 38% 95%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 16% 92%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 5% 72%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 6% 48%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 7% 26%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 30% 30%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 50% 22%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 68% 32%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 36% 54%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 58% 56%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 44% 74%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 12% 18%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 82% 22%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 24% 68%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 72% 84%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 14% 42%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 88% 48%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 46% 10%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 54% 88%, #FFFFFF 0 0.55px, transparent 0.75px),transparent;margin-left:6px;"></span>
+      </div>
+      <div class="row">
+        <span class="frame frame-v"><span class="token" style="width:18px;background:#1E3A8A;"></span><span class="token" style="width:18px;background:#E53935;"></span></span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

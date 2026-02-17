@@ -34,19 +34,80 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 
 ## Quick examples (with colour)
 
+<style>
+.frame {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.frame-s {
+  border: 2px solid #fff !important;
+}
+
+.frame-v {
+  border: 2px solid #fff !important;
+  background-image: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 48%, transparent 74%);
+  background-size: 260% 100%;
+  animation: frame-flow 1.35s linear infinite;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.35), 0 0 8px rgba(255,255,255,0.28);
+}
+
+.frame-o {
+  border: 2px solid #fff !important;
+  animation: frame-pulse 1s ease-in-out infinite;
+}
+
+@keyframes frame-flow {
+  0% {
+    background-position: 180% 0;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.3), 0 0 6px rgba(255,255,255,0.24);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.5), 0 0 12px rgba(255,255,255,0.4);
+  }
+  100% {
+    background-position: -80% 0;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.3), 0 0 6px rgba(255,255,255,0.24);
+  }
+}
+
+@keyframes frame-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.12), 0 0 4px rgba(255,255,255,0.2);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.58), 0 0 13px rgba(255,255,255,0.48);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame-v, .frame-o {
+    animation: none;
+    background-image: none;
+  }
+}
+</style>
+
 ### Easy
 
 **toki pona:** `toki`  
 **gloss:** hello  
 **colour rendering:** `(Purple)`  
-**display:** (<span style="display:inline-block;width:36px;height:12px;background:#7E57C2;border:1px solid #888;"></span>)
+**display:**<br> (<span style="display:inline-block;width:36px;height:12px;background:#7E57C2;border:1px solid #888;"></span>)
 
 ### Medium
 
 **toki pona:** `soweli kon kule loje`  
 **gloss:** red bird  
 **colour rendering:** `(Green + Light Blue + Pink) (Dark Blue) (Brown + Light Blue + Dark Blue) (Red)`  
-**display:**
+**display:**<br>
 (<span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:36px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:36px;height:12px;background:#E53935;border:1px solid #888;"></span>)
 
 ### Hard
@@ -54,10 +115,13 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 **toki pona:** `tenpo lape la jan li moku ala`  
 **gloss:** when sleeping, the person does not eat  
 **colour rendering:** `(Purple + Yellow + Dark Blue) (Light Blue + Dark Blue) (Purple + Dark Blue + Brown) | {S Red + Light Blue + Yellow} | {V Dark Blue + Red} (dotted white frame)`  
-**display:**
+**display:**<br>
 (<span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span>)<br>
-(S: <span style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span>)<br>
-(V: <span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span>)  (<span style="display:inline-block;width:36px;height:12px;box-sizing:border-box;background:transparent;border:2px dotted #FFFFFF;"></span>)
+<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span><br>
+<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  (<span style="display:inline-block;width:36px;height:12px;box-sizing:border-box;background:transparent;border:2px dotted #FFFFFF;"></span>)
+
+Animated role frames are enhancement-only: Markdown keeps static fallback frames, while custom HTML renderers can apply the CSS contract in `grammar.md` for flowing/pulsating effects.
+For guaranteed live animation preview, open `examples.html`.
 
 ---
 
