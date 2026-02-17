@@ -9,6 +9,8 @@
 ( … )   lexical element or modifier (unframed)  
 |       pause / darkness (group boundary; establishes clause structure)
 
+Rendering contract is documented in `rendering.md`.
+
 ---
 
 <style>
