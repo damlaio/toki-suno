@@ -91,7 +91,7 @@ The only requirement is that:
   display: inline-block;
   --seq-group-count: 1;
   --seq-show: 2s;
-  --seq-pause: 0.5s;
+  --seq-pause: 0.4s;
   --seq-step: calc(var(--seq-show) + var(--seq-pause));
   --seq-total: calc(var(--seq-group-count) * var(--seq-step));
 }
@@ -166,13 +166,16 @@ The only requirement is that:
 
 @keyframes seq-group-stage {
   0% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  80.0001% {
     opacity: 0;
+  }
+  16.6666% {
+    opacity: 0;
+  }
+  16.6667% {
+    opacity: 1;
+  }
+  99.9999% {
+    opacity: 1;
   }
   100% {
     opacity: 0;
@@ -181,16 +184,16 @@ The only requirement is that:
 
 @keyframes seq-blockout-cycle {
   0% {
-    opacity: 0;
-  }
-  80% {
-    opacity: 0;
-  }
-  80.0001% {
     opacity: 1;
+  }
+  16.6666% {
+    opacity: 1;
+  }
+  16.6667% {
+    opacity: 0;
   }
   100% {
-    opacity: 1;
+    opacity: 0;
   }
 }
 
