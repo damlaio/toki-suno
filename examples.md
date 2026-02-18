@@ -41,6 +41,52 @@ Rendering contract is documented in `rendering.md`.
   animation: frame-pulse 1s ease-in-out infinite;
 }
 
+.seq-display {
+  position: relative;
+  display: inline-block;
+  --seq-group-count: 1;
+  --seq-show: 2s;
+  --seq-pause: 0.5s;
+  --seq-step: calc(var(--seq-show) + var(--seq-pause));
+  --seq-total: calc(var(--seq-group-count) * var(--seq-step));
+}
+
+.seq-group {
+  display: block;
+  margin: 4px 0;
+}
+
+.seq-enabled .seq-group {
+  opacity: 1;
+}
+
+.seq-enabled:is(:hover, :focus-within) .seq-group {
+  opacity: 0;
+  animation-name: seq-group-final, seq-group-stage;
+  animation-duration: var(--seq-total), var(--seq-step);
+  animation-timing-function: linear, linear;
+  animation-iteration-count: 1, 1;
+  animation-fill-mode: forwards, none;
+  animation-delay: 0s, calc(var(--seq-i) * var(--seq-step));
+}
+
+.seq-enabled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+
+.seq-enabled:is(:hover, :focus-within)::before {
+  animation-name: seq-blockout-cycle;
+  animation-duration: var(--seq-step);
+  animation-timing-function: linear;
+  animation-iteration-count: var(--seq-group-count);
+}
+
 @keyframes frame-flow {
   0% {
     background-position: 180% 0;
@@ -66,10 +112,60 @@ Rendering contract is documented in `rendering.md`.
   }
 }
 
+@keyframes seq-group-final {
+  0% {
+    opacity: 0;
+  }
+  99.99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes seq-group-stage {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  80.0001% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes seq-blockout-cycle {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  80.0001% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .frame-v, .frame-o {
     animation: none;
     background-image: none;
+  }
+  .seq-enabled::before {
+    animation: none;
+    opacity: 0;
+  }
+  .seq-enabled .seq-group {
+    animation: none;
+    opacity: 1;
   }
 }
 </style>
@@ -88,7 +184,7 @@ Rendering contract is documented in `rendering.md`.
 `(Purple)`
 
 **display:**  
-<span style="display:inline-block;width:36px;height:12px;background:#7E57C2;border:1px solid #888;"></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:1;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:36px;height:12px;background:#7E57C2;border:1px solid #888;"></span></span></span>
 
 ---
 
@@ -106,7 +202,7 @@ Rendering contract is documented in `rendering.md`.
 `(Green + Light Blue + Pink) (Dark Blue)`
 
 **display:**  
-<span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:1;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#1E3A8A;border:1px solid #888;"></span></span></span>
 
 ---
 
@@ -124,7 +220,7 @@ Rendering contract is documented in `rendering.md`.
 `(Green + Light Blue + Pink) (Dark Blue) (Brown + Light Blue + Dark Blue) (Red)`
 
 **display:**  
-<span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#E53935;border:1px solid #888;"></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:1;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span>
 
 ---
 
@@ -146,8 +242,7 @@ Rendering contract is documented in `rendering.md`.
 `{V Dark Blue + Red}`
 
 **display:**  
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span><br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span></span>
 
 ---
 
@@ -169,8 +264,7 @@ Rendering contract is documented in `rendering.md`.
 `{V Dark Blue + Red} (Pink)`
 
 **display:**  
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span></span><br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span></span>
 
 ---
 
@@ -190,8 +284,7 @@ Rendering contract is documented in `rendering.md`.
 `{V Pink} (Dark Blue + Red)`
 
 **display:**  
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span></span><br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span>
 
 ---
 
@@ -217,10 +310,7 @@ Rendering contract is documented in `rendering.md`.
 `{O Pink + Green + Brown}`
 
 **display:**  
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span><br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>
-<br>
-<span class="frame frame-o" style="display:inline-flex;align-items:center;padding:2px;border:2px dotted #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:3;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:2;"><span class="frame frame-o" style="display:inline-flex;align-items:center;padding:2px;border:2px dotted #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span></span></span></span>
 
 ---
 
@@ -242,8 +332,7 @@ Rendering contract is documented in `rendering.md`.
 `{V Pink}`
 
 **display:**  
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span><br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span></span></span>
 
 ---
 
@@ -269,10 +358,7 @@ Rendering contract is documented in `rendering.md`.
 `{V Dark Blue + Red}`
 
 **display:**  
-<span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><br>
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span>
-<br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:3;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:2;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span></span>
 
 ---
 
@@ -294,8 +380,7 @@ Rendering contract is documented in `rendering.md`.
 `{V Dark Blue + Red} (dotted white frame)`
 
 **display:**  
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span><br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;box-sizing:border-box;background:transparent;border:2px dotted #FFFFFF;"></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;box-sizing:border-box;background:transparent;border:2px dotted #FFFFFF;"></span></span></span>
 
 ---
 
@@ -321,7 +406,5 @@ Rendering contract is documented in `rendering.md`.
 `{O dot-fill / static sparkle with irregular dotted frame}`
 
 **display:**  
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span><br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span><br>
-<span class="frame frame-o" style="display:inline-flex;align-items:center;padding:2px;border:2px dotted #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span style="display:inline-block;width:36px;height:12px;background:radial-gradient(circle at 8% 10%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 26% 6%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 51% 9%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 74% 7%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 92% 14%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 94% 34%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 92% 56%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 95% 78%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 86% 94%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 62% 94%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 38% 95%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 16% 92%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 5% 72%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 6% 48%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 7% 26%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 30% 30%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 50% 22%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 68% 32%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 36% 54%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 58% 56%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 44% 74%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 12% 18%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 82% 22%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 24% 68%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 72% 84%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 14% 42%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 88% 48%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 46% 10%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 54% 88%, #FFFFFF 0 0.55px, transparent 0.75px),transparent;"></span></span>
+<span class="seq-display seq-enabled" style="--seq-group-count:3;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:2;"><span class="frame frame-o" style="display:inline-flex;align-items:center;padding:2px;border:2px dotted #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span style="display:inline-block;width:36px;height:12px;background:radial-gradient(circle at 8% 10%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 26% 6%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 51% 9%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 74% 7%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 92% 14%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 94% 34%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 92% 56%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 95% 78%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 86% 94%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 62% 94%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 38% 95%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 16% 92%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 5% 72%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 6% 48%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 7% 26%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 30% 30%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 50% 22%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 68% 32%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 36% 54%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 58% 56%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 44% 74%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 12% 18%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 82% 22%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 24% 68%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 72% 84%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 14% 42%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 88% 48%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 46% 10%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 54% 88%, #FFFFFF 0 0.55px, transparent 0.75px),transparent;"></span></span></span></span>
 
