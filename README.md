@@ -26,9 +26,16 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 
 ## Repository contents
 
-- `grammar.md` — how utterances are structured (rendering, boundaries, attachment, visual roles)
+### Structure
+- `grammar.md` — how utterances are structured (boundaries, attachment, visual roles)
+
+### Vocabulary
 - `lexicon.md` — colour mappings for words
-- `examples.md` — short samples
+
+### Examples
+- `examples.md` — short illustrative samples  
+- `rendering.md` — documentation display notes for the examples
+
 
 ---
 
@@ -214,9 +221,12 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 **display:**<br>
 <span class="seq-display seq-enabled" style="--seq-group-count:3;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:2;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;box-sizing:border-box;background:transparent;border:2px dotted #FFFFFF;"></span></span></span>
 
-Animated role frames and sequential reveal are enhancement-only: Markdown keeps static fallback frames, while custom HTML renderers can apply the CSS contract in `rendering.md` for flowing/pulsating effects and pause-driven reveal.
-For guaranteed live animation preview, open `examples.html`.
-Canonical rendering contract: `rendering.md`.
+The renderings above are illustrative only. Animated role frames and sequential reveal are optional enhancements: Markdown provides static fallback frames, while custom HTML renderers may apply the CSS specification defined in `rendering.md` for flowing/pulsating effects and pause-driven reveal.
+
+For a guaranteed live animation preview, open `examples.html`.
+
+Canonical rendering specification: `rendering.md`.
+
 
 ---
 

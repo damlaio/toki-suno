@@ -1,10 +1,8 @@
-# Toki Suno Rendering Contract
+# Rendering Specification for Documentation Examples
 
 ## Scope
 
-This document defines how example displays are represented in project documentation and preview surfaces.
-It covers frame classes, fallback behavior, CSS enhancement, and accessibility constraints.
-It is not part of the conlang grammar itself.
+This document defines how Toki Suno examples are displayed in project documentation and preview environments. It specifies frame classes, Markdown fallback behaviour, CSS enhancements, and accessibility requirements. It does not define any part of the conlang grammar.
 
 ## Role Frame Model
 

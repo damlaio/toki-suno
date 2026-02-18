@@ -9,8 +9,24 @@
 ( … )   lexical element or modifier (unframed)  
 |       pause / darkness (group boundary; establishes clause structure)
 
-Rendering contract is documented in `rendering.md`.
+The renderings below are illustrative only. The documentation rendering specification is defined in `rendering.md`.
 
+## Rendering flexibility
+
+Toki Suno does not prescribe a fixed visual style. Any shape, layout, or medium may be used.
+
+Form is flexible, and implementations may:
+
+- Use circles, rectangles, gradients, projections, or emitted light.
+- Adjust contrast, brightness, saturation, or texture.
+- Adapt colour intensity to the capabilities of the display medium.
+- Optimise visibility based on ambient light or material constraints.
+
+The only requirement is that:
+
+- Lexical colour identity remains distinguishable.
+- Role frames remain recognisable.
+- Pauses and structural boundaries remain perceptible.
 ---
 
 <style>
