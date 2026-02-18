@@ -302,21 +302,26 @@ Rendering contract is documented in `rendering.md`.
 ## 10. Question
 
 **toki pona:**  
-`jan seme li moku`
+`sina moku e seme`
 
-*who eats?*
+*what do you eat?*
 
 **structure:**  
-`{S jan} (seme)`<br>
+`{S sina}`<br>
 `|`<br>
-`{V moku}`
+`{V moku}`<br>
+`|`<br>
+`{O seme}`
 
 **colour rendering:**  
-`{S Red + Light Blue + Yellow} (dot-fill / static sparkle with irregular dotted frame)`<br>
+`{S Brown + Yellow}`<br>
 `|`<br>
-`{V Dark Blue + Red}`
+`{V Dark Blue + Red}`<br>
+`|`<br>
+`{O dot-fill / static sparkle with irregular dotted frame}`
 
 **display:**  
-<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;background:radial-gradient(circle at 8% 10%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 26% 6%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 51% 9%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 74% 7%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 92% 14%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 94% 34%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 92% 56%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 95% 78%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 86% 94%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 62% 94%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 38% 95%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 16% 92%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 5% 72%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 6% 48%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 7% 26%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 30% 30%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 50% 22%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 68% 32%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 36% 54%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 58% 56%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 44% 74%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 12% 18%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 82% 22%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 24% 68%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 72% 84%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 14% 42%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 88% 48%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 46% 10%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 54% 88%, #FFFFFF 0 0.55px, transparent 0.75px),transparent;"></span><br>
-<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>
+<span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span><br>
+<span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span><br>
+<span class="frame frame-o" style="display:inline-flex;align-items:center;padding:2px;border:2px dotted #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span style="display:inline-block;width:36px;height:12px;background:radial-gradient(circle at 8% 10%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 26% 6%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 51% 9%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 74% 7%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 92% 14%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 94% 34%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 92% 56%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 95% 78%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 86% 94%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 62% 94%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 38% 95%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 16% 92%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 5% 72%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 6% 48%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 7% 26%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 30% 30%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 50% 22%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 68% 32%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 36% 54%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 58% 56%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 44% 74%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 12% 18%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 82% 22%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 24% 68%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 72% 84%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 14% 42%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 88% 48%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 46% 10%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 54% 88%, #FFFFFF 0 0.55px, transparent 0.75px),transparent;"></span></span>
 
