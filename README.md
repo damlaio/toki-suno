@@ -253,10 +253,28 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 
 The renderings above are illustrative only. Animated role frames and sequential reveal are optional enhancements: Markdown provides static fallback frames, while custom HTML renderers may apply the CSS specification defined in `rendering.md` for flowing/pulsating effects and pause-driven reveal.
 
-For a guaranteed live animation preview, open `examples.html`.
+For a guaranteed live animation preview, open `pages/examples.html`.
 
 Canonical rendering specification: `rendering.md`.
 
+## Local publish (`pages/`)
+
+Generate the local documentation site into the `pages/` folder:
+
+```bash
+python -m pip install -r scripts/requirements-pages.txt
+python scripts/build_pages.py
+```
+
+This writes:
+- `pages/index.html`
+- `pages/grammar.html`
+- `pages/lexicon.html`
+- `pages/examples.html`
+- `pages/rendering.html`
+- `pages/site.css`
+
+To preview locally, open `pages/index.html` in your browser.
 
 ---
 

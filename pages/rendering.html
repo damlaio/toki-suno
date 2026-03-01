@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rendering | Toki Suno</title>
+  <meta name="description" content="Toki Suno documentation site generated from Markdown.">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell">
+      <h1><a href="index.html">Toki Suno</a></h1>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+<a href="grammar.html">Grammar</a>
+<a href="lexicon.html">Lexicon</a>
+<a href="examples.html">Examples</a>
+<a href="rendering.html" class="active">Rendering</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="shell prose">
+    <h1 id="rendering-specification-for-documentation-examples">Rendering Specification for Documentation Examples</h1>
+<h2 id="scope">Scope</h2>
+<p>This document defines how Toki Suno examples are displayed in project documentation and preview environments. It specifies frame classes, Markdown fallback behaviour, CSS enhancements, and accessibility requirements. It does not define any part of the conlang grammar.</p>
+<h2 id="role-frame-model">Role Frame Model</h2>
+<p>Role heads use a shared wrapper pattern:</p>
+<ul>
+<li>Subject: <code>&lt;span class="frame frame-s"&gt;...&lt;/span&gt;</code></li>
+<li>Verb: <code>&lt;span class="frame frame-v"&gt;...&lt;/span&gt;</code></li>
+<li>Object: <code>&lt;span class="frame frame-o"&gt;...&lt;/span&gt;</code></li>
+<li>Lexical color blocks inside frames may use <code>&lt;span class="token"&gt;...&lt;/span&gt;</code></li>
+</ul>
+<h2 id="markdown-fallback-rules">Markdown Fallback Rules</h2>
+<p>In Markdown-first environments (including GitHub), keep inline fallback styles on each frame:</p>
+<ul>
+<li><code>.frame.frame-s</code>: solid white border</li>
+<li><code>.frame.frame-v</code>: dashed white border (static fallback for flowing)</li>
+<li><code>.frame.frame-o</code>: dotted white border (static fallback for pulsating)</li>
+<li>all frames: rounded rectangle, small padding, <code>inline-flex</code> layout</li>
+</ul>
+<h2 id="css-enhancement-contract">CSS Enhancement Contract</h2>
+<p>Canonical CSS source of truth:</p>
+<pre><code class="language-css">.frame {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.frame-s {
+  border: 2px solid #fff;
+}
+
+.frame-v {
+  border: 2px solid rgba(255,255,255,0.35);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 0 6px rgba(255,255,255,0.2);
+}
+
+.frame-v::after {
+  content: &quot;&quot;;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.92) 0 8px,
+      rgba(255,255,255,0.18) 8px 16px
+    ) top / 200% 2px no-repeat,
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.92) 0 8px,
+      rgba(255,255,255,0.18) 8px 16px
+    ) right / 2px 200% no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.92) 0 8px,
+      rgba(255,255,255,0.18) 8px 16px
+    ) bottom / 200% 2px no-repeat,
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.92) 0 8px,
+      rgba(255,255,255,0.18) 8px 16px
+    ) left / 2px 200% no-repeat;
+  animation: frame-flow 0.9s linear infinite;
+  pointer-events: none;
+}
+
+.frame-o {
+  border: 2px solid #fff;
+  animation: frame-pulse 1s ease-in-out infinite;
+}
+
+@keyframes frame-flow {
+  from {
+    background-position: 0 0, 100% 0, 0 100%, 0 0;
+  }
+  to {
+    background-position: 16px 0, 100% 16px, -16px 100%, 0 -16px;
+  }
+}
+
+@keyframes frame-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.12), 0 0 4px rgba(255,255,255,0.2);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.58), 0 0 13px rgba(255,255,255,0.48);
+  }
+}
+
+.seq-display {
+  position: relative;
+  display: inline-block;
+  --seq-group-count: 1;
+  --seq-show: 2s;
+  --seq-pause: 0.4s;
+  --seq-step: calc(var(--seq-show) + var(--seq-pause));
+  --seq-total: calc(var(--seq-group-count) * var(--seq-step));
+}
+
+.seq-group {
+  display: block;
+}
+
+.seq-enabled .seq-group {
+  opacity: 1;
+}
+
+.seq-enabled:is(:hover, :focus-within) .seq-group {
+  opacity: 0;
+  animation-name: seq-group-final, seq-group-stage;
+  animation-duration: var(--seq-total), var(--seq-step);
+  animation-timing-function: linear, linear;
+  animation-iteration-count: 1, 1;
+  animation-fill-mode: forwards, none;
+  animation-delay: 0s, calc(var(--seq-i) * var(--seq-step));
+}
+
+.seq-enabled::before {
+  content: &quot;&quot;;
+  position: absolute;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+
+.seq-enabled:is(:hover, :focus-within)::before {
+  animation-name: seq-blockout-cycle;
+  animation-duration: var(--seq-step);
+  animation-timing-function: linear;
+  animation-iteration-count: var(--seq-group-count);
+}
+
+@keyframes seq-group-final {
+  0% {
+    opacity: 0;
+  }
+  99.99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes seq-group-stage {
+  0% {
+    opacity: 0;
+  }
+  16.6666% {
+    opacity: 0;
+  }
+  16.6667% {
+    opacity: 1;
+  }
+  99.9999% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes seq-blockout-cycle {
+  0% {
+    opacity: 1;
+  }
+  16.6666% {
+    opacity: 1;
+  }
+  16.6667% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+</code></pre>
+<p>Sequential reveal is additive to role frame effects: <code>.frame-v</code> flow and <code>.frame-o</code> pulse remain active while groups are revealed.</p>
+<h2 id="accessibility-prefers-reduced-motion">Accessibility (prefers-reduced-motion)</h2>
+<p>When reduced motion is requested, animated role frames must stop motion:</p>
+<pre><code class="language-css">@media (prefers-reduced-motion: reduce) {
+  .frame-v, .frame-o {
+    animation: none;
+    background-image: none;
+  }
+  .frame-v::after {
+    animation: none;
+  }
+  .seq-enabled::before {
+    animation: none;
+    opacity: 0;
+  }
+  .seq-enabled .seq-group {
+    animation: none;
+    opacity: 1;
+  }
+}
+</code></pre>
+<h2 id="sequential-reveal-contract-css-only-no-js">Sequential Reveal Contract (CSS-only, no JS)</h2>
+<p>Use this contract for pause-driven reveal without JavaScript:</p>
+<ul>
+<li>Container: <code>&lt;span class="seq-display seq-enabled"&gt;...&lt;/span&gt;</code></li>
+<li>Group item: <code>&lt;span class="seq-group" style="--seq-i:N;"&gt;...&lt;/span&gt;</code></li>
+<li>Optional marker for final state handling: <code>.seq-final</code></li>
+</ul>
+<p>Required container variables:</p>
+<ul>
+<li><code>--seq-group-count</code>: total number of groups</li>
+<li><code>--seq-show</code>: visible segment duration (locked default <code>2s</code>)</li>
+<li><code>--seq-pause</code>: pause blockout duration (locked default <code>0.4s</code>)</li>
+<li><code>--seq-step</code>: <code>calc(var(--seq-show) + var(--seq-pause))</code></li>
+<li><code>--seq-total</code>: <code>calc(var(--seq-group-count) * var(--seq-step))</code></li>
+</ul>
+<p>Timeline semantics:</p>
+<ul>
+<li>Sequence starts on hover/focus of the sentence viewport.</li>
+<li>Group 1 appears first.</li>
+<li>Pause segments are full blackout.</li>
+<li>During sequence, only the current group is visible.</li>
+<li>After the last group cycle, full sentence appears.</li>
+<li>While hovered/focused, final full-sentence state remains visible.</li>
+<li>When hover/focus ends, the static full sentence state is shown.</li>
+</ul>
+<h2 id="reference-implementations">Reference Implementations</h2>
+<ul>
+<li><code>examples.md</code>: Markdown-facing examples with embedded enhancement CSS.</li>
+<li><code>examples.html</code>: guaranteed runnable animated preview surface.</li>
+<li><code>README.md</code>: quick examples and project-facing rendering snippets.</li>
+</ul>
+<p>Content deduplication policy:</p>
+<ul>
+<li>Canonical CSS lives in <code>rendering.md</code>.</li>
+<li>Applied CSS in other docs is an implementation copy.</li>
+<li>Update <code>rendering.md</code> first, then sync copied blocks.</li>
+</ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>Generated from <code>rendering.md</code> on 2026-03-01 12:30 UTC.</p>
+      <p><a href="index.html">Back to index</a></p>
+    </div>
+  </footer>
+</body>
+</html>

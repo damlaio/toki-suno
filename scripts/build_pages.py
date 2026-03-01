@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build static HTML pages for GitHub Pages from root Markdown sources."""
+"""Build static HTML pages in the local pages/ folder from root Markdown sources."""
 
 from __future__ import annotations
 
@@ -175,6 +175,10 @@ def validate_local_links(output_pages: Dict[str, str]) -> None:
             target_page = parsed.path or page_name
             if target_page.startswith("/"):
                 target_page = target_page[1:]
+            ext = pathlib.Path(target_page).suffix.lower()
+            if ext and ext != ".html":
+                # Ignore local asset links (e.g. site.css, images).
+                continue
 
             if target_page not in output_pages:
                 errors.append(f"{page_name}: missing target page '{href}'")
@@ -195,7 +199,7 @@ def build_pages(check_links: bool) -> None:
 
     PAGES_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copy2(style_src, pages_style_dst)
-    (PAGES_DIR / ".nojekyll").write_text("", encoding="utf-8")
+    (PAGES_DIR / ".nojekyll").write_text("\n", encoding="utf-8")
 
     link_map = {doc["source"]: doc["output"] for doc in DOCS}
     rendered_content: Dict[str, str] = {}
@@ -233,7 +237,7 @@ def build_pages(check_links: bool) -> None:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Build GitHub Pages HTML from Markdown docs.")
+    parser = argparse.ArgumentParser(description="Build local pages HTML from Markdown docs.")
     parser.add_argument(
         "--skip-link-check",
         action="store_true",

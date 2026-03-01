@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Examples | Toki Suno</title>
+  <meta name="description" content="Toki Suno documentation site generated from Markdown.">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell">
+      <h1><a href="index.html">Toki Suno</a></h1>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+<a href="grammar.html">Grammar</a>
+<a href="lexicon.html">Lexicon</a>
+<a href="examples.html" class="active">Examples</a>
+<a href="rendering.html">Rendering</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="shell prose">
+    <h1 id="examples">Examples</h1>
+<h2 id="legend">Legend</h2>
+<p>{S … }  subject frame (<code>frame frame-s</code>; solid white frame in fallback)<br>
+{V … }  verb frame (<code>frame frame-v</code>; flowing in CSS, dashed in fallback)<br>
+{O … }  object frame (<code>frame frame-o</code>; pulsating in CSS, dotted in fallback)</p>
+<p>( … )   lexical element or modifier (unframed)<br>
+|       pause / darkness (group boundary; establishes clause structure)</p>
+<p>The renderings below are illustrative only. The documentation rendering specification is defined in <code>rendering.md</code>.</p>
+<h2 id="rendering-flexibility">Rendering flexibility</h2>
+<p>Toki Suno does not prescribe a fixed visual style. Any shape, layout, or medium may be used.</p>
+<p>Form is flexible, and implementations may:</p>
+<ul>
+<li>Use circles, rectangles, gradients, projections, or emitted light.</li>
+<li>Adjust contrast, brightness, saturation, or texture.</li>
+<li>Adapt colour intensity to the capabilities of the display medium.</li>
+<li>Optimise visibility based on ambient light or material constraints.</li>
+</ul>
+<p>The only requirement is that:</p>
+<ul>
+<li>Lexical colour identity remains distinguishable.</li>
+<li>Role frames remain recognisable.</li>
+<li>Pauses and structural boundaries remain perceptible.</li>
+</ul>
+<hr>
+<style>
+.frame {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.frame-s {
+  border: 2px solid #fff !important;
+}
+
+.frame-v {
+  border: 2px solid rgba(255,255,255,0.35) !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 0 6px rgba(255,255,255,0.2);
+}
+
+.frame-v::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.92) 0 8px,
+      rgba(255,255,255,0.18) 8px 16px
+    ) top / 200% 2px no-repeat,
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.92) 0 8px,
+      rgba(255,255,255,0.18) 8px 16px
+    ) right / 2px 200% no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.92) 0 8px,
+      rgba(255,255,255,0.18) 8px 16px
+    ) bottom / 200% 2px no-repeat,
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.92) 0 8px,
+      rgba(255,255,255,0.18) 8px 16px
+    ) left / 2px 200% no-repeat;
+  animation: frame-flow 0.9s linear infinite;
+  pointer-events: none;
+}
+
+.frame-o {
+  border: 2px solid #fff !important;
+  animation: frame-pulse 1s ease-in-out infinite;
+}
+
+.seq-display {
+  position: relative;
+  display: inline-block;
+  --seq-group-count: 1;
+  --seq-show: 2s;
+  --seq-pause: 0.4s;
+  --seq-step: calc(var(--seq-show) + var(--seq-pause));
+  --seq-total: calc(var(--seq-group-count) * var(--seq-step));
+}
+
+.seq-group {
+  display: block;
+  margin: 4px 0;
+}
+
+.seq-enabled .seq-group {
+  opacity: 1;
+}
+
+.seq-enabled:is(:hover, :focus-within) .seq-group {
+  opacity: 0;
+  animation-name: seq-group-final, seq-group-stage;
+  animation-duration: var(--seq-total), var(--seq-step);
+  animation-timing-function: linear, linear;
+  animation-iteration-count: 1, 1;
+  animation-fill-mode: forwards, none;
+  animation-delay: 0s, calc(var(--seq-i) * var(--seq-step));
+}
+
+.seq-enabled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+
+.seq-enabled:is(:hover, :focus-within)::before {
+  animation-name: seq-blockout-cycle;
+  animation-duration: var(--seq-step);
+  animation-timing-function: linear;
+  animation-iteration-count: var(--seq-group-count);
+}
+
+@keyframes frame-flow {
+  from {
+    background-position: 0 0, 100% 0, 0 100%, 0 0;
+  }
+  to {
+    background-position: 16px 0, 100% 16px, -16px 100%, 0 -16px;
+  }
+}
+
+@keyframes frame-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.12), 0 0 4px rgba(255,255,255,0.2);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.58), 0 0 13px rgba(255,255,255,0.48);
+  }
+}
+
+@keyframes seq-group-final {
+  0% {
+    opacity: 0;
+  }
+  99.99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes seq-group-stage {
+  0% {
+    opacity: 0;
+  }
+  16.6666% {
+    opacity: 0;
+  }
+  16.6667% {
+    opacity: 1;
+  }
+  99.9999% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes seq-blockout-cycle {
+  0% {
+    opacity: 1;
+  }
+  16.6666% {
+    opacity: 1;
+  }
+  16.6667% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame-v, .frame-o {
+    animation: none;
+    background-image: none;
+  }
+  .frame-v::after {
+    animation: none;
+  }
+  .seq-enabled::before {
+    animation: none;
+    opacity: 0;
+  }
+  .seq-enabled .seq-group {
+    animation: none;
+    opacity: 1;
+  }
+}
+</style>
+
+<h2 id="1-greeting">1. Greeting</h2>
+<p><strong>toki pona:</strong><br>
+<code>toki!</code></p>
+<p><em>hello</em></p>
+<p><strong>structure:</strong><br>
+<code>(toki)</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>(Purple)</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:1;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:36px;height:12px;background:#7E57C2;border:1px solid #888;"></span></span></span></p>
+<hr>
+<h2 id="2-noun-phrase-bird-without-using-waso">2. Noun phrase (bird without using waso)</h2>
+<p><strong>toki pona:</strong><br>
+<code>soweli kon</code></p>
+<p><em>bird (lit. air animal)</em></p>
+<p><strong>structure:</strong><br>
+<code>(soweli) (kon)</code>  </p>
+<p><strong>colour rendering:</strong><br>
+<code>(Green + Light Blue + Pink) (Dark Blue)</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:1;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#1E3A8A;border:1px solid #888;"></span></span></span></p>
+<hr>
+<h2 id="3-noun-phrase-with-colour">3. Noun phrase with colour</h2>
+<p><strong>toki pona:</strong><br>
+<code>soweli kon kule loje</code></p>
+<p><em>red bird</em></p>
+<p><strong>structure:</strong><br>
+<code>(soweli) (kon) (kule loje)</code>  </p>
+<p><strong>colour rendering:</strong><br>
+<code>(Green + Light Blue + Pink) (Dark Blue) (Brown + Light Blue + Dark Blue) (Red)</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:1;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:36px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span></p>
+<hr>
+<h2 id="4-intransitive-predicate">4. Intransitive predicate</h2>
+<p><strong>toki pona:</strong><br>
+<code>soweli li moku</code></p>
+<p><em>the animal eats</em></p>
+<p><strong>structure:</strong><br>
+<code>{S soweli}</code><br>
+<code>|</code><br>
+<code>{V moku}</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>{S Green + Light Blue + Pink}</code><br>
+<code>|</code><br>
+<code>{V Dark Blue + Red}</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span></span></p>
+<hr>
+<h2 id="5-first-person-predicates-with-modifiers">5. First person predicates with modifiers</h2>
+<p><strong>toki pona:</strong><br>
+<code>mi moku pona</code>  </p>
+<p><em>I eat well / I eat good food</em></p>
+<p><strong>structure:</strong><br>
+<code>{S mi}</code><br>
+<code>|</code><br>
+<code>{V moku} (pona)</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>{S Yellow + Light Blue}</code><br>
+<code>|</code><br>
+<code>{V Dark Blue + Red} (Pink)</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span></span></p>
+<hr>
+<p><strong>toki pona:</strong><br>
+<code>mi pona moku</code>  </p>
+<p><em>I am good at eating</em></p>
+<p><strong>structure:</strong><br>
+<code>{S mi}</code><br>
+<code>|</code><br>
+<code>{V pona} (moku)</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>{S Yellow + Light Blue}</code><br>
+<code>|</code><br>
+<code>{V Pink} (Dark Blue + Red)</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span></p>
+<hr>
+<h2 id="6-transitive-predicate">6. Transitive predicate</h2>
+<p><strong>toki pona:</strong><br>
+<code>jan li moku e kili</code></p>
+<p><em>the person eats fruit</em></p>
+<p><strong>structure:</strong><br>
+<code>{S jan}</code><br>
+<code>|</code><br>
+<code>{V moku}</code><br>
+<code>|</code><br>
+<code>{O kili}</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>{S Red + Light Blue + Yellow}</code><br>
+<code>|</code><br>
+<code>{V Dark Blue + Red}</code><br>
+<code>|</code><br>
+<code>{O Pink + Green + Brown}</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:3;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:2;"><span class="frame frame-o" style="display:inline-flex;align-items:center;padding:2px;border:2px dotted #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#FF6FAE;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#2E8B57;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span></span></span></span></p>
+<hr>
+<h2 id="7-predicate-adjective">7. Predicate adjective</h2>
+<p><strong>toki pona:</strong><br>
+<code>jan li pona</code></p>
+<p><em>the person is good</em></p>
+<p><strong>structure:</strong><br>
+<code>{S jan}</code><br>
+<code>|</code><br>
+<code>{V pona}</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>{S Red + Light Blue + Yellow}</code><br>
+<code>|</code><br>
+<code>{V Pink}</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:36px;height:12px;background:#FF6FAE;border:1px solid #888;"></span></span></span></span></p>
+<hr>
+<h2 id="8-context-setting">8. Context setting</h2>
+<p><strong>toki pona:</strong><br>
+<code>tenpo lape la jan li moku</code></p>
+<p><em>when sleeping / after sleeping, the person eats</em></p>
+<p><strong>structure:</strong><br>
+<code>(tenpo) (lape) (la)</code><br>
+<code>|</code><br>
+<code>{S jan}</code><br>
+<code>|</code><br>
+<code>{V moku}</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>(Purple + Yellow + Dark Blue) (Light Blue + Dark Blue) (Purple + Dark Blue + Brown)</code><br>
+<code>|</code><br>
+<code>{S Red + Light Blue + Yellow}</code><br>
+<code>|</code><br>
+<code>{V Dark Blue + Red}</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:3;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:2;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span></span></p>
+<hr>
+<h2 id="9-negation">9. Negation</h2>
+<p><strong>toki pona:</strong><br>
+<code>jan li moku ala</code></p>
+<p><em>the person does not eat</em></p>
+<p><strong>structure:</strong><br>
+<code>{S jan}</code><br>
+<code>|</code><br>
+<code>{V moku} (ala)</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>{S Red + Light Blue + Yellow}</code><br>
+<code>|</code><br>
+<code>{V Dark Blue + Red} (dotted white frame)</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:2;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;box-sizing:border-box;background:transparent;border:2px dotted #FFFFFF;"></span></span></span></p>
+<hr>
+<h2 id="10-question">10. Question</h2>
+<p><strong>toki pona:</strong><br>
+<code>sina moku e seme</code></p>
+<p><em>what do you eat?</em></p>
+<p><strong>structure:</strong><br>
+<code>{S sina}</code><br>
+<code>|</code><br>
+<code>{V moku}</code><br>
+<code>|</code><br>
+<code>{O seme}</code></p>
+<p><strong>colour rendering:</strong><br>
+<code>{S Brown + Yellow}</code><br>
+<code>|</code><br>
+<code>{V Dark Blue + Red}</code><br>
+<code>|</code><br>
+<code>{O dot-fill / static sparkle with irregular dotted frame}</code></p>
+<p><strong>display:</strong><br>
+<span class="seq-display seq-enabled" style="--seq-group-count:3;"><span class="seq-group" style="--seq-i:0;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#8B5A2B;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:2;"><span class="frame frame-o" style="display:inline-flex;align-items:center;padding:2px;border:2px dotted #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span style="display:inline-block;width:36px;height:12px;background:radial-gradient(circle at 8% 10%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 26% 6%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 51% 9%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 74% 7%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 92% 14%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 94% 34%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 92% 56%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 95% 78%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 86% 94%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 62% 94%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 38% 95%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 16% 92%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 5% 72%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 6% 48%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 7% 26%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 30% 30%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 50% 22%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 68% 32%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 36% 54%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 58% 56%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 44% 74%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 12% 18%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 82% 22%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 24% 68%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 72% 84%, #FFFFFF 0 0.55px, transparent 0.75px),radial-gradient(circle at 14% 42%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 88% 48%, #FFFFFF 0 0.5px, transparent 0.7px),radial-gradient(circle at 46% 10%, #FFFFFF 0 0.45px, transparent 0.65px),radial-gradient(circle at 54% 88%, #FFFFFF 0 0.55px, transparent 0.75px),transparent;"></span></span></span></span></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>Generated from <code>examples.md</code> on 2026-03-01 12:30 UTC.</p>
+      <p><a href="index.html">Back to index</a></p>
+    </div>
+  </footer>
+</body>
+</html>
