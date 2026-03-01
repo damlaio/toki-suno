@@ -1,0 +1,44 @@
+name: Build Pages HTML
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "README.md"
+      - "grammar.md"
+      - "lexicon.md"
+      - "examples.md"
+      - "rendering.md"
+      - "scripts/build_pages.py"
+      - "scripts/requirements-pages.txt"
+      - "site/**"
+      - ".github/workflows/build-pages.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      uses: actions/checkout@v4
+
+      - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+      - name: Install converter dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -r scripts/requirements-pages.txt
+
+      - name: Build pages
+      run: python scripts/build_pages.py
+
+      - name: Commit generated pages
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "chore(pages): regenerate html output"
+        file_pattern: "pages/*.html pages/site.css pages/.nojekyll"
