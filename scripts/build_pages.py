@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build static HTML pages in the local pages/ folder from root Markdown sources."""
+"""Build static HTML pages in the local docs/ folder from root Markdown sources."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ import markdown
 from markdown.extensions.toc import TocExtension
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-PAGES_DIR = ROOT / "pages"
+PAGES_DIR = ROOT / "docs"
 SITE_DIR = ROOT / "site"
 
 DOCS: List[Dict[str, str]] = [
