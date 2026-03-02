@@ -251,31 +251,6 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 **display:**<br>
 <span class="seq-display seq-enabled" style="--seq-group-count:3;"><span class="seq-group" style="--seq-i:0;"><span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:18px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span>  <span style="display:inline-block;width:12px;height:12px;background:#7E57C2;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span style="display:inline-block;width:12px;height:12px;background:#8B5A2B;border:1px solid #888;"></span></span><span class="seq-group" style="--seq-i:1;"><span class="frame frame-s" style="display:inline-flex;align-items:center;padding:2px;border:2px solid #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:12px;height:12px;background:#E53935;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#66CCFF;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:12px;height:12px;background:#F4D03F;border:1px solid #888;"></span></span></span><span class="seq-group" style="--seq-i:2;"><span class="frame frame-v" style="display:inline-flex;align-items:center;padding:2px;border:2px dashed #FFFFFF;border-radius:6px;box-sizing:border-box;vertical-align:middle;"><span class="token" style="display:inline-block;width:18px;height:12px;background:#1E3A8A;border:1px solid #888;"></span><span class="token" style="display:inline-block;width:18px;height:12px;background:#E53935;border:1px solid #888;"></span></span>  <span style="display:inline-block;width:36px;height:12px;box-sizing:border-box;background:transparent;border:2px dotted #FFFFFF;"></span></span></span>
 
-The renderings above are illustrative only. Animated role frames and sequential reveal are optional enhancements: Markdown provides static fallback frames, while custom HTML renderers may apply the CSS specification defined in `rendering.md` for flowing/pulsating effects and pause-driven reveal.
-
-For a guaranteed live animation preview, open `docs/examples.html`.
-
-Canonical rendering specification: `rendering.md`.
-
-## Local publish (`docs/`)
-
-Generate the local documentation site into the `docs/` folder:
-
-```bash
-python -m pip install -r scripts/requirements-pages.txt
-python scripts/build_pages.py
-```
-
-This writes:
-- `docs/index.html`
-- `docs/grammar.html`
-- `docs/lexicon.html`
-- `docs/examples.html`
-- `docs/rendering.html`
-- `docs/site.css`
-
-To preview locally, open `docs/index.html` in your browser.
-
 ---
 
 ## Credit
