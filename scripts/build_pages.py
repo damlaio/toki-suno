@@ -203,7 +203,6 @@ def build_pages(check_links: bool) -> None:
 
     link_map = {doc["source"]: doc["output"] for doc in DOCS}
     rendered_content: Dict[str, str] = {}
-    toc_tokens_by_source: Dict[str, List[dict]] = {}
 
     for doc in DOCS:
         source_path = ROOT / doc["source"]
@@ -212,16 +211,11 @@ def build_pages(check_links: bool) -> None:
         raw_content = md.convert(text)
         html_content = rewrite_md_links(raw_content, link_map)
         rendered_content[doc["source"]] = html_content
-        toc_tokens_by_source[doc["source"]] = getattr(md, "toc_tokens", [])
-
-    index_hub = build_index_hub(toc_tokens_by_source)
     output_pages: Dict[str, str] = {}
 
     for doc in DOCS:
         source_name = doc["source"]
         content = rendered_content[source_name]
-        if source_name == "README.md":
-            content = index_hub + content
         page_html = fill_template(
             template,
             page_title=doc["title"],
