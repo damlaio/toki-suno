@@ -112,6 +112,7 @@ Their visual rendering is defined in the lexicon.
 The grammar of Toki Suno is not prescriptive.
 
 The system is designed to:
+
 - adapt to different visual implementations
 - tolerate variation
 - evolve as new constraints are explored
