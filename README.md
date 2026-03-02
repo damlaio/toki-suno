@@ -24,17 +24,16 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 
 ---
 
-## Repository contents
+## Contents
 
-### Structure
-- `grammar.md` — how utterances are structured (boundaries, attachment, visual roles)
+- [`grammar`](grammar.md) — how utterances are structured (boundaries, attachment, visual roles)
 
 ### Vocabulary
-- `lexicon.md` — colour mappings for words
+- [`lexicon`](lexicon.md) — colour mappings for words
 
 ### Examples
-- `examples.md` — short illustrative samples  
-- `rendering.md` — documentation display notes for the examples
+- [`examples`](examples.md) — short illustrative samples  
+- [`rendering`](rendering.md) — documentation display notes for the examples
 
 
 ---
