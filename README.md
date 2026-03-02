@@ -26,14 +26,14 @@ Toki Suno keeps Toki Pona’s minimal vocabulary and context-driven meaning, and
 
 ## Contents
 
-- [`grammar`](grammar.md) — how utterances are structured (boundaries, attachment, visual roles)
+- [`Grammar`](grammar.md) — how utterances are structured (boundaries, attachment, visual roles)
 
 ### Vocabulary
-- [`lexicon`](lexicon.md) — colour mappings for words
+- [`Lexicon`](lexicon.md) — colour mappings for words
 
 ### Examples
-- [`examples`](examples.md) — short illustrative samples  
-- [`rendering`](rendering.md) — documentation display notes for the examples
+- [`Examples`](examples.md) — short illustrative samples  
+- [`Rendering`](rendering.md) — documentation display notes for the examples
 
 
 ---
@@ -260,7 +260,7 @@ Inspired by Toki Pona (Sonja Lang). The structure was also informed by signed in
 
 ## Feedback
 
-If you spot inconsistencies or edge cases, open an issue with:
+If you spot inconsistencies or edge cases, [open an issue](https://github.com/damlaio/toki-suno/issues) with:
 
 - the intended Toki Pona gloss
 - what you expected the structure to be
